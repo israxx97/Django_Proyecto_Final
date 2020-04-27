@@ -31,12 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Añadiremos las apps que vayamos creando.
+    'core',
+    'contacto',
+    'productos',
+    'social.apps.SocialConfig',
 ]
 
 MIDDLEWARE = [
@@ -62,10 +68,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.processors.ctx_dict',
+                'core.processors.ctx_vinos',
+                'productos.processors.ctx_vinos_unidades_vendidas',
             ],
         },
     },
 ]
+
+
+# Admins
+# https://docs.djangoproject.com/en/3.0/ref/settings/#admins
+
+ADMINS = [
+    ('Israel', 'isragarcia97@gmail.com')
+]
+
+
+# Wsgi Application
+# https://docs.djangoproject.com/en/3.0/ref/settings/#wsgi-application
 
 WSGI_APPLICATION = 'Django_Israel_Garcia_Cabaneros.wsgi.application'
 
@@ -76,7 +97,10 @@ WSGI_APPLICATION = 'Django_Israel_Garcia_Cabaneros.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+        # Pueden usarse 4 Sistemas Gestores de Bases de Datos (sqlite3, mysql, postgresql y oracle).
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # Si usáramos cualquier SGBD distinto a sqlite3 deberíamos de añadir los campos USER,
+        # PASSWORD, PORT y HOST, además de los 2 que ya vienen por defecto (ENGINE y NAME).
     }
 }
 
@@ -103,9 +127,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ES'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Madrid'
 
 USE_I18N = True
 
@@ -118,3 +142,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Constantes propias.
+
+""" Ruta donde guardaremos todos los archivos media que vayamos subiendo,
+(ir a models y un atributo de la clase donde se guarden imágenes (mirar upload_to)). """
+
+MEDIA_URL = '/media/'  # No se usará para MEDIA_ROOT, se usara en urls.py.
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+# Auth redirecciones.
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block bestsellers %}
+{% for vmv in vinos_mas_vendidos %}
+<p>{{vmv.id}}</p>
+<p>{{vmv.nombre}}</p>
+<img src="{{vmv.imagen.url}}" alt="{{vmv.nombre}}" style="width: 300px; heigth: 200px;">
+<p>{{vmv.precio}} €/unidad</p>
+<p>{{vmv.ventas_totales}} unidades vendidas</p>
+{% endfor %}
+{% endblock bestsellers %}
+
+{% block footer %}
+{% endblock footer %}
