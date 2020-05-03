@@ -55,12 +55,13 @@ class Vino(models.Model):
 
     anyo = models.CharField(_("Año"), choices=YEARS,
                             max_length=4, help_text="Selecciona un año.")
-    tipo = models.ManyToManyField(
-        Tipo, _("Tipo"), help_text="Introduce una tipo de vino existente o crea uno nuevo si no existe (Ej. Tinto, Rosado, Verdejo).")
+
+    tipo = models.ForeignKey(Tipo, verbose_name=_(
+        "Tipo"), on_delete=models.CASCADE)
     denominacion = models.CharField(_("Denominación de Origen"),
                                     max_length=100, help_text="Lugar de procedencia del producto.")
-    bodega = models.ManyToManyField(
-        Bodega, _("Bodega"), help_text="Introduce una bodega existente o crea una nueva si no existe.")
+    bodega = models.ForeignKey(Bodega, verbose_name=_(
+        "Bodega"), on_delete=models.CASCADE)
     volumen = models.PositiveIntegerField(
         _("Volumen (cL)"), help_text="Campo entero positivo.")
     stock = models.PositiveIntegerField(_("Stock"), validators=[

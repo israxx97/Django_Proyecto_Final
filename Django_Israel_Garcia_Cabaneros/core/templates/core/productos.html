@@ -6,7 +6,7 @@
 {% for v in page_vinos %}
 <p>{{v.nombre}} ({{v.anyo}})</p>
 <img src="{{v.imagen.url}}" alt="{{v.nombre}}" style="width: 300px; heigth: 200px;">
-<p>{{v.descripcion|linebreaks}}</p>
+<a href="{% url 'product' %}?vino_id={{v.id}}">Comprar</a>
 {% endfor %}
 
 <div class="pagination">

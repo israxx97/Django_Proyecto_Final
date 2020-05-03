@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Producto {% for v in vino %}{{v.id}}{% endfor %}{% endblock title %}
+
+{% block vinos %}
+{% for v in vino %}
+<p>{{v.nombre}} ({{v.tipo.tipo}})</p>
+<img src="{{v.imagen.url}}" alt="{{v.nombre}}" style="width: 300px; heigth: 200px;">
+<p>{{v.descripcion|linebreaks}}</p>
+<p>{{v.bodega.bodega}}</p>
+<img src="{{v.bodega.imagen.url}}" alt="{{v.bodega.bodega}}" style="width: 200px; heigth: 100px;">
+{% endfor %}
+{% endblock vinos %}

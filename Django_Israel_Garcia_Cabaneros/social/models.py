@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Social(models.Model):
-    nombre = models.CharField(verbose_name="Nombre", max_length=20)
+    nombre = models.CharField(verbose_name="Nombre", max_length=20, help_text="Para que se muestre el icono usamos la página https://fontawesome.com/, deberemos poner como nombre 'fa fa-nombreredsocial' tal y como nos muestra la página web si accedemos al icono que queremos mostrar en nuestra web.")
     url = models.URLField(verbose_name="URL",
                           max_length=200, blank=True, null=True)
     created = models.DateField(

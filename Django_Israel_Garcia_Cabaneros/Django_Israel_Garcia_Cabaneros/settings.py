@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Añadiremos las apps que vayamos creando.
     'core',
-    'contacto',
     'productos',
     'social.apps.SocialConfig',
 ]
@@ -70,6 +69,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social.processors.ctx_dict',
                 'core.processors.ctx_vinos',
+                'core.processors.ctx_bodega',
+                'core.processors.ctx_vino',
                 'productos.processors.ctx_vinos_unidades_vendidas',
             ],
         },
