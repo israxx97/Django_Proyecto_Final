@@ -57,11 +57,11 @@ class Vino(models.Model):
                             max_length=4, help_text="Selecciona un año.")
 
     tipo = models.ForeignKey(Tipo, verbose_name=_(
-        "Tipo"), on_delete=models.CASCADE)
+        "Tipo"), on_delete=models.CASCADE, help_text="Selecciona un tipo.")
     denominacion = models.CharField(_("Denominación de Origen"),
                                     max_length=100, help_text="Lugar de procedencia del producto.")
     bodega = models.ForeignKey(Bodega, verbose_name=_(
-        "Bodega"), on_delete=models.CASCADE)
+        "Bodega"), on_delete=models.CASCADE, help_text="Selecciona una bodega.")
     volumen = models.PositiveIntegerField(
         _("Volumen (cL)"), help_text="Campo entero positivo.")
     stock = models.PositiveIntegerField(_("Stock"), validators=[
