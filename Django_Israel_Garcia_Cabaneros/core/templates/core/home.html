@@ -2,14 +2,44 @@
 
 {% block title %}Home{% endblock title %}
 
+{% load static %}
+
+{% block bg %}
+<div class="hero-2" style="background-image: url({% static 'core/images/wine-bg-home.jpg' %});">
+    <div class="container">
+        <div class="row justify-content-center text-center align-items-center">
+            <div class="col-md-8">
+                <span class="sub-title"></span>
+                <h2>Bienvenido</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock bg %}
+
 {% block bestsellers %}
-{% for vmv in vinos_mas_vendidos %}
-<p>{{vmv.id}}</p>
-<p>{{vmv.nombre}}</p>
-<img src="{{vmv.imagen.url}}" alt="{{vmv.nombre}}" style="width: 300px; heigth: 200px;">
-<p>{{vmv.precio}} €/unidad</p>
-<p>{{vmv.ventas_totales}} unidades vendidas</p>
-{% endfor %}
+<div class="site-section mt-5">
+    <div class="container">
+        <div class="col-12 section-title text-center mb-5">
+            <div class="d-block">Productos más vendidos</div>
+        </div>
+
+        <div class="row">
+            {% for vmv in vinos_mas_vendidos %}
+            <div class="col-lg-4 mb-5 col-md-6">
+                <div class="wine_v_1 text-center pb-4">
+                    <a href="{% url 'product' %}?vino_id={{vmv.id}}" class="thumbnail d-block mb-4"><img
+                            src="{{vmv.imagen.url}}" alt="{{vmv.nombre}}" class="img-fluid"></a>
+                    <div>
+                        <h3 class="heading mb-1">{{vmv.nombre}}</h3>
+                        <span class="prece">{{vmv.precio}}€</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock bestsellers %}
 
 {% block footer %}

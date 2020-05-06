@@ -3,29 +3,80 @@
 {% block title %}Productos{% endblock title %}
 
 {% block vinos %}
-{% for v in page_vinos %}
-<p>{{v.nombre}} ({{v.anyo}})</p>
-<img src="{{v.imagen.url}}" alt="{{v.nombre}}" style="width: 300px; heigth: 200px;">
-<a href="{% url 'product' %}?vino_id={{v.id}}">Comprar</a>
-{% endfor %}
+<div class="site-section mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p>Página {{ page_vinos.number }} de {{ page_vinos.paginator.num_pages }}</p>
+                        <div class="d-flex justify-content-center">
+                            <ul class="pagination">
+                                {% if page_vinos.has_previous %}
+                                <li class="page-item"><a href="?page=1" class="page-link">&laquo; Primera</a></li>
+                                <li class="page-item"><a href="?page={{ page_vinos.previous_page_number }}"
+                                        class="page-link">Anterior</a></li>
+                                {% endif %}
 
-<div class="pagination">
-    <span class="step-links">
+                                {% if page_vinos.has_next %}
+                                <li class="page-item"><a href="?page={{ page_vinos.next_page_number }}"
+                                        class="page-link">Siguiente</a></li>
+                                <li class="page-item"><a href="?page={{ page_vinos.paginator.num_pages }}"
+                                        class="page-link">Última
+                                        &raquo;</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        {% if page_vinos.has_previous %}
-        <a href="?page=1">&laquo; Primera</a>
-        <a href="?page={{ page_vinos.previous_page_number }}">Anterior</a>
-        {% endif %}
+            {% for v in page_vinos %}
+            <div class="col-lg-4 mb-5 col-md-6">
+                <div class="wine_v_1 text-center pb-4">
+                    <a href="{% url 'product' %}?vino_id={{v.id}}" class="thumbnail d-block mb-4"><img
+                            src="{{v.imagen.url}}" alt="{{v.nombre}}" class="img-fluid"></a>
+                    <div>
+                        <h3 class="heading mb-1">{{v.nombre}}</h3>
+                        <span class="price">{{v.precio}}€</span>
+                    </div>
 
-        <span class="current">
-            Página {{ page_vinos.number }} de {{ page_vinos.paginator.num_pages }}
-        </span>
+                    <div class="wine-actions">
+                        <h3 class="heading-2"><a href="{% url 'product' %}?vino_id={{v.id}}">{{v.nombre}}</a></h3>
+                        <span class="price d-block">{{v.precio}}€</span>
 
-        {% if page_vinos.has_next %}
-        <a href="?page={{ page_vinos.next_page_number }}">Siguiente</a>
-        <a href="?page={{ page_vinos.paginator.num_pages }}">Última &raquo;</a>
-        {% endif %}
+                        <a href="{% url 'product' %}?vino_id={{v.id}}" class="btn add"><span
+                                class="icon-shopping-bag mr-3"></span>Ver producto</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
 
-    </span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p>Página {{ page_vinos.number }} de {{ page_vinos.paginator.num_pages }}</p>
+                        <div class="d-flex justify-content-center">
+                            <ul class="pagination">
+                                {% if page_vinos.has_previous %}
+                                <li class="page-item"><a href="?page=1" class="page-link">&laquo; Primera</a></li>
+                                <li class="page-item"><a href="?page={{ page_vinos.previous_page_number }}"
+                                        class="page-link">Anterior</a></li>
+                                {% endif %}
+
+                                {% if page_vinos.has_next %}
+                                <li class="page-item"><a href="?page={{ page_vinos.next_page_number }}"
+                                        class="page-link">Siguiente</a></li>
+                                <li class="page-item"><a href="?page={{ page_vinos.paginator.num_pages }}"
+                                        class="page-link">Última
+                                        &raquo;</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock vinos %}

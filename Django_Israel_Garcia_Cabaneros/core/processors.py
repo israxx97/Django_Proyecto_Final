@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 
 def ctx_vinos(request):
     vinos = Vino.objects.all()
-    paginator = Paginator(vinos, 3)
+    paginator = Paginator(vinos, 6)
 
     page_number = request.GET.get('page')
     page_vinos = paginator.get_page(page_number)
