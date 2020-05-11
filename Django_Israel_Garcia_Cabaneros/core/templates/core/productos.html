@@ -35,7 +35,7 @@
             <div class="col-lg-4 mb-5 col-md-6">
                 <div class="wine_v_1 text-center pb-4">
                     <a href="{% url 'product' %}?vino_id={{v.id}}" class="thumbnail d-block mb-4"><img
-                            src="{{v.imagen.url}}" alt="{{v.nombre}}" class="img-fluid"></a>
+                            src="{{v.imagen.url}}" alt="{{v.nombre}}" class="img-fluid" style="width: 300px !important; height: 300px !important;"></a>
                     <div>
                         <h3 class="heading mb-1">{{v.nombre}}</h3>
                         <span class="price">{{v.precio}}€</span>
