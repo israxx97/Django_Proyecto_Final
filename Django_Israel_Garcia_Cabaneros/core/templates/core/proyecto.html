@@ -17,3 +17,59 @@
 </div>
 {% endblock bg %}
 
+{% block content %}
+<div class="site-section py-5 custom-border-bottom" data-aos="fade">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="block-16">
+                    <figure>
+                        <a href="{% static 'core/documents/200511_I070_Israel_Garcia_Cabañeros.pdf' %}"
+                            download="200511_I070_Israel_Garcia_Cabañeros">
+                            <img src="{% static 'core/images/pdf.jpg' %}" alt="pdf" class="img-fluid">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <div class="site-section-heading pt-3 mb-4">
+                    <h2 class="text-black font-heading-serif">Documento de proyecto.</h2>
+                </div>
+                <p>Documento PDF con el contenido del proyecto.</p>
+                <ul>
+                    <li><a href="{% static 'core/documents/200511_I070_Diagrama_de_Clases.mdj' %}"
+                            download="200511_I070_Diagrama_de_Clases">Diagrama de Clases
+                        </a></li>
+                    <li><a href="{% static 'core/documents/200511_I070_Diagrama_de_Casos_de_Uso.mdj' %}"
+                            download="200511_I070_Diagrama_de_Casos_de_Uso">Diagrama de Casos de Uso
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section py-5 bg-light custom-border-bottom" data-aos="fade">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 order-md-2">
+                <div class="block-16">
+                    <figure>
+                        <a href="https://sway.office.com/ZjGpkt1eEaMNn0V6?ref=Link" target="blank">
+                            <img src="{% static 'core/images/sway.png' %}" alt="sway" class="img-fluid ">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-md-5 mr-auto">
+                <div class="site-section-heading pt-3 mb-4">
+                    <h2 class="text-black font-heading-serif">Presentación Sway.</h2>
+                </div>
+                <p>Presentación hecha con Microsoft Sway con la guía del contenido que se comentará durante la defensa
+                    del proyecto.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
