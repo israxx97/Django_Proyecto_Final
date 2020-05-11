@@ -33,4 +33,5 @@ def producto(request):
     return render(request, "core/producto.html")
 
 
-
+def proyecto(request):
+    return render(request, "core/proyecto.html")
